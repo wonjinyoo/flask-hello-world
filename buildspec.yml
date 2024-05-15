@@ -1,0 +1,22 @@
+version: 0.2
+
+proxy:
+  upload-artifacts: yes
+  logs: yes
+
+phases:
+  install:
+    on-failure: ABORT
+    commands:
+      - npm i
+  build:
+    on-failure: ABORT
+    commands:
+      - npm run build
+
+artifacts:
+  files:
+    - node_modules/**/*
+    - dist/**/*
+    - package.json
+    - Procfile
